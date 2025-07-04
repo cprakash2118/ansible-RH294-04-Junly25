@@ -1,0 +1,114 @@
+### Point-01###
+
+- Repos:-
+Current repo  - https://github.com/cprakash2118/ansible-RH294-04-Junly25
+Reference repo - https://github.com/cprakash2118/cisco-ansible
+
+
+- Product Name- Ansible Automation Platform (AAP) version 2.x 
+Reference CUDO (Customer Documentation):-
+https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5
+https://docs.ansible.com/ansible/latest/index.html
+https://docs.ansible.com/
+https://www.redhat.com/en/services/training/rh294-red-hat-linux-automation-with-ansible
+
+- Training & Certifications modules w.r.t Ansible Automation Platform:-
+RH294/EX294 - Start 
+DO374/EX374 - Advance Ansible 
+DO467/EX467 - Ansible Controller 
+DO457/EX457 - Ansible Netwrok 
+DO417/EX417 - Ansible Windows 
+RH358/EX358 - Configration Management module (server configuration).
+
+w.r.t Red Hat OpenShift:-
+DO336 - VM migration to Red Hat OpenShift Virtulization via Ansible.
+
+
+### Point-02###
+- TOC (Table of Contents):-
+- Classroom Environment:-
+  2.1-) Users details:-
+   student/student   [passwordless authentication(ssh) & with password authorization(sudo)] 
+   devops/redhat     [passwordless authentication(ssh) & authorization(sudo)]
+   root/redhat 
+   
+   *******************
+   user1 - [passwordless authentication(ssh) & with password authorization(sudo)] 
+   user2 - [passwordless authentication(ssh) & authorization(sudo)]
+   user3 - [With password authentication(ssh) & with password authorization(sudo)]
+   *******************
+
+  2.2-) Network/Domain Details:-
+  student network     - 172.25.250.0/24 - lab.example.com 
+  classroom networok  - 172.25.252.0/24 - example.com 
+  
+  2.3-) VMs/Servers (w.r.t Linux/Unix):-
+  workstation.alb.example.com    [jump server/control node]
+  FYI- 
+   Installed ansible - "ansible-navigator" -> ansible-core also deployed.
+   Control node can be only Linux/Unix (Window's node can not be control node).
+  
+  servera-d.lab.example.com  [managed host]
+  
+  utility.lab.example.com    [privide required services like - DNS/YUM repo etc ]
+ 
+  Final:-
+  HOw to verify work:-
+  
+  Login to ROL - RedHat Online Learning - https://rol.redhat.com 
+  Use RHL ID (RedHat Login ID)
+  Access workstation console and login as "student/student".
+  Veried all points via workstation, using terminal.
+  $ mkdir work ; cd work 
+  $ touch invenoty 
+  $ vim invenoty
+   [servers]
+    server[a:d].lab.example.com 
+  $ ansible all -i invenoty -m ping 
+  $ ansibnle all -i invenoty -m shell -a "id student ; echo "  
+  $ ansibnle all -i invenoty -m shell -a "id devops ; echo "
+  $ ansibnle all -i invenoty -m shell -a "uptime ; echo "
+  
+  
+####################=======================
+##- Overview discussion:-
+- Ansible Installation (Setup Ansible repo, and install ansible using below command).
+$ sudo dnf install ansible-core ansible-navigator 
+or 
+$ sudo yum install ansible-core ansible-navigator 
+
+- Ansible Configurations:-
+ - inventory 
+ - ansible.cfg 
+ - ansible-navigator.yaml 
+
+- Deployment:-
+ - playbook,jinja2,roles,collections & modules.
+
+
+- ansible.cfg 
+1-) ANSIBLE_CONFIG=/location/to/ansile.cfg/file 
+    FYI- If ANSIBLE_CONFIG variable defined and file (ansible,cfg) exist.
+2-) Check file (ansible.cfg) w.r.t current working dir (pwd).
+3-) Check file (~/.ansible.cfg) 
+4-) Default ansible.cfg file - /etc/ansible/ansible.cfg 
+
+
+
+- ansible-navigator.yaml 
+1-) ANSIBLE_NAVIGATOR_CONFIG=/location/to/ansible-navigator.yaml/file 
+    FYI- If ANSIBLE_NAVIGATOR_CONFIG variable defined and file (ansible-navigator.yaml) exist.
+2-) Check file (ansible-navigator.yaml) w.r.t current working dir (pwd).
+3-) Check file (~/.ansible-navigator.cfg)
+
+Unit-1st -  Introducing Ansible
+
+  
+  
+  
+  
+  
+  
+  
+  
+
