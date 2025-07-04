@@ -1,0 +1,10 @@
+---
+- name: Example
+  hosts: dev
+  tasks:
+    - name: 1st task 
+      ansible.builtin.debug:
+        msg: "Task-01"
+    - name: 2nd task 
+      ansible.builtin.debug:
+        msg: "Task-02"
