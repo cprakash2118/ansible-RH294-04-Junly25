@@ -1,0 +1,172 @@
+    1  ls /var/lib/gdm/
+    2  sudo -i
+    3  moutn
+    4  mount
+    5  cat /opt/app-root/src/jupyter_lab_config.py 
+    6  less /opt/app-root/src/jupyter_lab_config.py
+    7  cat /cloud-init/instance-data.json 
+    8  cat /cloud-init/instance-data.json |less
+    9  exit
+   10  cat /cloud-init/instance-data.json |less
+   11  cat /cloud-init/instance-data.json |less
+   12  exit
+   13  mount /dev/sr0 /mnt
+   14  sudo mount /dev/sr0 /mnt
+   15  cat /mnt/openstack/latest/meta_data.json 
+   16  sudo -i
+   17  ssh workstation; exit
+   18  ssh workstation; exit
+   19  ssh servera 
+   20  ssh servera -l devops
+   21  mkdir work 
+   22  cd work/
+   23  pwd
+   24  ll
+   25  touch ansible.cfg inventory ansible-navigator.yaml 
+   26  file * 
+   27  vim inventory 
+   28  file * 
+   29  ansible all -m pign -i inventory 
+   30  ansible all -m ping -i inventory 
+   31  ansible all -i inventory -m command -a "uptime"
+   32  ansible all -i inventory -m command -a "uptime ; echo ------------"
+   33  ansible all -i inventory -m shell -a "uptime ; echo ------------"
+   34  ansible all -i inventory -m shell -a "id student ; echo ------------"
+   35  ansible all -i inventory -m shell -a "id devops ; echo ------------"
+   36  cat /etc/sudoers | grep wheel 
+   37  sudo cat /etc/sudoers | grep wheel 
+   38  sudo cat /etc/sudoers | grep wheel | grep -v "#"
+   39  ansible all -i inventory -m shell -a "id student; sudo cat /etc/sudoers | grep wheel | grep -v "#" ; echo ------------"
+   40  ansible all -i inventory -m shell -a "id student; sudo cat /etc/sudoers | grep wheel | grep -v '#' ; echo ------------"
+   41  ansible all -i inventory -m shell -a "id student; sudo cat /etc/sudoers | grep wheel | grep -v '#' ; echo ------------" -K
+   42  ansible all -i inventory -m shell -a "id student; sudo cat /etc/sudoers | grep wheel | grep -v '#' ; echo ------------" -u devops 
+   43  cat /etc/sudoers.d/devops 
+   44  sudo cat /etc/sudoers.d/devops 
+   45  ssh servera 
+   46  ssh servera  -l root
+   47  ansible all -i inventory -m shell -a "id student; cat /etc/sudoers.d/90-cloud-init-users ; echo ------------" -u devops 
+   48  ansible all -i inventory -m shell -a "id student; sudo cat /etc/sudoers.d/90-cloud-init-users ; echo ------------" -u devops 
+   49  ll
+   50  file *
+   51  rpm -qa | grep ansible
+   52  ansible --version 
+   53  rpm -qa | grep ansible
+   54  ll
+   55  file * 
+   56  vim inventory 
+   57  ansible --version 
+   58  ls -l /home/student/work/ansible.cfg
+   59  pwd
+   60  ls -l ./ansible
+   61  ls -l ./ansible.cfg 
+   62  mv ansible.cfg ansible.cfG
+   63  file * 
+   64  ansible --version 
+   65  ansible all -m ping -i inventory 
+   66  ansible all -i inventory -m shell -a "uptime ; echo ----------------"
+   67  ansible prod --list-hosts 
+   68  ansible prod --list-hosts -i inventory 
+   69  ansible dev --list-hosts -i inventory 
+   70  ansible dev,test --list-hosts -i inventory 
+   71  ansible all --list-hosts -i inventory 
+   72  file * 
+   73  ansible --version 
+   74  export ANSIBLE_CONFIG=/var/tmp/ansible.cfg 
+   75  env | grep ANSIB
+   76  ansible --version 
+   77  touch /var/tmp/ansible.cfg
+   78  ansible --version 
+   79  unset ANSIBLE_CONFIG
+   80  env | grep ANSIB
+   81  ansible --version 
+   82  export ANSIBLE_CONFIG=/var/tmp/ansible.cfg 
+   83  env | grep ANSIB
+   84  ansible --version 
+   85  mv ansible.cfG ansible.cfg
+   86  ansible --version 
+   87  unset ANSIBLE_CONFIG 
+   88  ansible --version 
+   89  touch ~/.ansible.cfg
+   90  ansible --version 
+   91  export ANSIBLE_CONFIG=/var/tmp/ansible.cfg 
+   92  ansible --version 
+   93  unset ANSIBLE_CONFIG 
+   94  ansible --version 
+   95  ll
+   96  mv ansible.cfg ansible.cf
+   97  ll
+   98  ansible --version 
+   99  mv /home/student/.ansible.cfg /home/student/ansible.cfg
+  100  ansible --version 
+  101  ll
+  102  mv ansible.cf ansible.cfg 
+  103  ll
+  104  mkdir BookMyShow/{avl,playment,booking,noti,ui,xyz}
+  105  mkdir -p BookMyShow/{avl,playment,booking,noti,ui,xyz}
+  106  tree 
+  107  touch BookMyShow/{avl,playment,booking,noti,ui,xyz}/{ansible.cfg,ansible-navigator.yaml,inventory,playbooks.yaml}
+  108  tree
+  109  ll
+  110  mv BookMyShow /tmp/
+  111  tree
+  112  vim ansible.cfg 
+  113  ansible --version 
+  114  vim ansible.cfg 
+  115  cat /etc/ansible/ansible.cfg 
+  116  ansible-config init --disabled > ansible-reference.cfg
+  117  ll
+  118  cat ansible-reference.cfg | grep "^\["
+  119  cat ansible-reference.cfg | grep "^\[" > ansible.cfg 
+  120  vim ansible.cfg 
+  121  ansible all -m shell -a "uname -n ; id ; echo -------------------"
+  122  vim ansible.cfg 
+  123  ansible all -m shell -a "uname -n ; id ; echo -------------------"
+  124  vim ansible.cfg 
+  125  ansible all -m shell -a "uname -n ; id ; echo -------------------"
+  126  vim ansible.cfg 
+  127  ansible all -m shell -a "uname -n ; id ; echo -------------------"
+  128  vim ansible.cfg 
+  129  ansible all -m shell -a "uname -n ; id ; echo -------------------"
+  130  vim ansible.cfg 
+  131  ansible all -m shell -a "uname -n ; id ; echo -------------------"
+  132  vim ansible.cfg 
+  133  ansible all -m shell -a "uname -n ; id ; echo -------------------"
+  134  vim ansible.cfg 
+  135  ansible all -m shell -a "uname -n ; id ; echo -------------------"
+  136  vim ansible.cfg 
+  137  ansible all -m shell -a "uname -n ; id ; echo -------------------"
+  138  vim ansible.cfg 
+  139  ansible all -m shell -a "uname -n ; id ; echo -------------------"
+  140  vim ansible.cfg 
+  141  ansible all -m shell -a "uname -n ; id ; echo -------------------"
+  142  vim ansible.cfg 
+  143  vim -O inventory ansible.cfg 
+  144  vim ansible-navigator.yaml 
+  145  ansible-navigator images
+  146  podman images
+  147  podman rmi -af 
+  148  podman images
+  149  ansible-navigator images
+  150  podman login utility.lab.example.com
+  151  ansible-navigator images
+  152  podman images
+  153  ansible-navigator images
+  154  ansible-navigator doc yum 
+  155  ansible-navigator doc yum -m stdout 
+  156  vim playbook.yaml 
+  157  ansible-navigator run -m stdout playbook.yaml --syntax-check
+  158  ansible-navigator run -m stdout playbook.yaml 
+  159  ll
+  160  cd ..
+  161  mv work day-01 
+  162  git clone https://github.com/cprakash2118/ansible-RH294-04-Junly25
+  163  cp -rpv day-01 ansible-RH294-04-Junly25/
+  164  cd ansible-RH294-04-Junly25/
+  165  pwd
+  166  ll
+  167  git status 
+  168  git add .
+  169  git status 
+  170  git commit -m update
+  171  git push 
+  172  history > day-01/history-day-01
