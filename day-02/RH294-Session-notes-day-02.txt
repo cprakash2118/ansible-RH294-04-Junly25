@@ -1,0 +1,66 @@
+#Quick Recap (5mins):-
+- Product - Red Hat Ansible Automation Platform (AAPv2.x).
+- Classroom environment:-
+ - Users details:-
+   student/student [sudo access]
+   passwordless authentication, with password authorization.
+   
+   devops/redhat [sudo access]
+   passwordless authentication & authorization.
+   
+   root/redhat (direct root login not using).
+   
+ - VMs/Servers details:-
+  workstation.lab.example.com  [installed ansible-core & ansible-navigator] - Installed ansible (ansible-core).
+  server[a:d].lab.example.com  [Managed host]
+  
+ - Ansible Overview discussion:-
+   Ansible Configuration:-
+    - inventory    - server info part 
+	- ansible.cfg  - Configuration part 
+	  1- ANSIBLE_CONFIG=/location/ansible.cfg file - ANSIBLE_CONFIG must be defined and file (ansible.cfg ) must be on the same defined location.
+	  
+	  2- CUrrent Working Directory 
+	  
+	  3- "file - .ansible.cfg" must be at user's home dir (eg:- /home/student/.ansible.cfg).
+	  
+	  4- Default configuration [/etc/ansible/ansible.cfg]
+	  
+	  
+	
+	- ansible-navigator.yaml - related to execution part
+	1- ANSIBLE_NAVIGATION_CONFIG=/location/ansible-navigator.yaml file - ANSIBLE_CONFIG must be defined and file (ansible-navigator.yaml ) must be on the same defined location.
+	  
+	  2- CUrrent Working Directory 
+	  
+	  3- "file - .ansible-navigator.yaml" must be at user's home dir (eg:- /home/student/.ansible-navigator.yaml)
+	  
+##############
+Unit-1-  Introducing Ansible:-
+- Automating Linux Administration with Ansible
+- Installing Ansible
+
+- Ansible is Simple (yaml format)
+- Ansible is powerful 
+  - configuration management
+  - workflow automation
+  - network automation
+  - Application Deployment 
+  - Can be used as Orchestration tool (infra level).
+  
+- Agentless [ssh or winRM] - Linux/Unix/Windows/Network-Devices(Router/switches).
+
+### Task - Apache deployment:-
+- Install apache and required dependencies (firewalld) [httpd,firewalld]
+- Start and enable services [services - httpd, firewalld]
+- Application deployment (index.html) 
+- Enable firewalld port (80).
+
+- Validate the work/URL
+
+
+
+
+	
+	
+  
