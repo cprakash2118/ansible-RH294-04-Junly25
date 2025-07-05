@@ -1,0 +1,53 @@
+---
+- name: Apache deployment - 1st Play 
+  hosts: webserver 
+  tasks:
+    - name: Install the latest version of Apache
+      ansible.builtin.yum:
+        name: httpd
+        state: present 
+    - name: Install the latest version of firewalld
+      ansible.builtin.yum:
+        name: firewalld 
+        state: present 
+
+    - name: Start service httpd, if not started
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: true
+
+    - name: Start service firewalld, if not started
+      ansible.builtin.service:
+        name: firewalld
+        state: started
+        enabled: true
+    - name: Copy using inline content
+      ansible.builtin.copy:
+         content: "# This file was moved to /etc/other.conf \n"
+         dest: /var/www/html/index.html 
+    - name: permit traffic in default zone for https service
+      ansible.posix.firewalld:
+         service: http
+         permanent: yes
+         state: enabled
+         immediate: yes
+
+- name: Verify application deployment 
+  hosts: localhost
+  become: false 
+  tasks:
+    - name: Verify via uri module  
+      ansible.builtin.uri:
+        url: http://serverd.lab.example.com
+        return_content: yes
+        status_code: 200
+
+
+
+
+ 
+
+
+
+ 
