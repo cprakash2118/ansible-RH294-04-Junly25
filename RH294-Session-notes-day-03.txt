@@ -1,0 +1,18 @@
+#Quick Recap:-
+# mkdir dir1/ ; cd  dir1 
+# touch ansible.cfg ansible-navigator.yaml inventory 
+Note: "ansible.cfg & ansible-navigator.yaml might be on other golobal location (w.r.t system/users)
+Example: env | egrep 'ANSIBLE_CONFIG|ANSIBLE_NAVIGATOR_CONFIG' ; user's home dir as hidden file.
+# playbook.yaml files 
+
+- Play-01: apache deployment 
+ - install apache or required packges (httpd;firewalld).
+ - Start and enable respective services (httpd;firewalld).
+ - Deploy application (index.html) w.r.t apache (/var/www/html/index.html).
+ - Enable firewall port w.r.t http
+
+- Play-02: Verify the deployment: using "uri" module.
+
+vim playbook 
+---   [Doc starter]
+- name: 1st play name [It alway start with "-" or list]
