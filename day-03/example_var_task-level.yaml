@@ -1,0 +1,11 @@
+---
+- name: Var examples
+  hosts: web,db 
+  vars:
+    pkg_name: play-level-var
+  tasks:
+    - name: Task-01 execution 
+      vars:
+        pkg_name: task-level-var
+      ansible.builtin.debug: 
+        msg: "Value of {{pkg_name}}"

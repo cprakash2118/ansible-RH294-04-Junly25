@@ -1,0 +1,4 @@
+- apache_pkg_name: httpd
+- firewalld_pkg_name: firewalld
+- apache_svc_name: httpd
+- firewalld_svc_name: firewalld

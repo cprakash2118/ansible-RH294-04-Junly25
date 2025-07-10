@@ -1,0 +1,8 @@
+---
+- name: Example - Group-Vars & Host-Vars 
+  hosts: web,db,serverc.lab.example.com
+  tasks:
+    - name: Task-01 - Display variable 
+      ansible.builtin.debug: 
+          msg: "System details - {{ var_name }}"
+

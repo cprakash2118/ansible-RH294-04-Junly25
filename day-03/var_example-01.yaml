@@ -1,0 +1,13 @@
+---
+- name: Play-01 - var examples
+  hosts: servera.lab.example.com 
+  vars:
+    package_name: httpd
+    service_name: httpd
+  tasks:
+    - name: Display Package name-
+      ansible.builtin.debug:
+        msg: "This varibale name is - {{ package_name }}}."
+    - name: Display Service name-
+      ansible.builtin.debug:
+        msg: "This varibale name is - {{ service_name }}}."

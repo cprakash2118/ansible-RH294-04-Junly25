@@ -1,0 +1,13 @@
+---
+- name: Example - Group-Vars & Host-Vars 
+  hosts: web,db
+  tasks:
+    - name: Task-01 - Display variable 
+      ansible.builtin.debug: 
+          msg: "System details - {{ var_name }}"
+      when: inventory_hostname in groups['web']
+
+    - name: Task-02 - Display variable 
+      ansible.builtin.debug: 
+          msg: "System details - {{ var_name }}"
+      when: inventory_hostname in groups['db']

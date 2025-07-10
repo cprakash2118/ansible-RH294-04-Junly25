@@ -1,0 +1,44 @@
+---
+- name: 1st Play - Apache deployment.
+  hosts: web 
+  tasks:
+    - name: Task-01 - INstall required packages [httpd; firewalld]
+      ansible.builtin.yum:
+        name:
+          - httpd
+          - firewalld 
+        state: present
+
+    - name: Task-02 - Start and enable respective services - only apache service (httpd;firewalld).
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: true 
+
+    - name: Task-03 - Start and enable respective services - only apache firewalld(httpd;firewalld).
+      ansible.builtin.service:
+        name: firewalld 
+        state: started
+        enabled: true 
+
+    - name: Task-04 - Deploy application (index.html) w.r.t apache (/var/www/html/index.html). 
+      ansible.builtin.copy:
+        content: "# This file was moved to /etc/other.conf \n"
+        dest: /var/www/html/index.html
+    
+    - name: Task-05 - Enable firewall port w.r.t http
+      ansible.posix.firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+        immediate: yes
+ 
+- name: 2nd Play - Apache verification.
+  hosts: localhost
+  become: false 
+  tasks:
+    - name: URI module for verification.
+      ansible.builtin.uri:
+        url: http://servera.lab.example.com 
+        return_content: yes
+        status_code: 200
