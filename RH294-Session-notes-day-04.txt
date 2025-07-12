@@ -1,0 +1,90 @@
+#Quick Recap (5mins).
+- Ansible Automation Platform:-
+  - Ansible Core 
+  - ANsible Nagivator 
+  - Ansible Content Collection 
+  - Ansible Execution Environment
+  - Ansible Controller 
+  - Ansible  Builder 
+  - etc 
+
+- INstallation part - ansible-navigator ; ansible-core (via yum/dnf/apt-get).
+- ansible inventory & configuration files:
+   - inventory 
+   - ansible.cfg 
+   - ansible-navigator.yaml 
+
+- Ansible Adhoc commands:-
+- ansible --version 
+- ansible all -list-hosts 
+- ansible all -m ping 
+- ansible all -m shell -a "uptime ; echo ------"
+
+- Playbooks:-
+  - One or more play
+  - Each play having one or more tasks
+  - Execution of playbook via ansible-navigator.
+    $ ansible-navigator run -m stdout playbookName.yaml --syntax-check
+    $ ansible-navigator run -m stdout playbookName.yaml 
+    $ ansible-navigator doc -m stdout copy 
+     FYI- 1st line give us idea regarding collections.
+     ansible.builtin.copy 
+
+- Playbook impt points:-
+
+$ vim playbook.yaml 
+--- 
+- name: Description about play.
+  hosts: all 
+  tasks:
+    - name: Task-01 
+	  ansible.builtin.debug:
+	    msg: "This is my 1st task"
+    - name: Task-02
+	  ansible.builtin.debug:
+	    msg: "This is my 2nd task"
+- name: 2nd play 
+  hosts: localhost
+  become: false 
+  tasks:
+    - name: Task-01-play2nd 
+	  ansible.builtin.debug:
+	    msg: "This is my 1st task of 2nd play"
+...
+
+- Variables:-
+$ vim playbook-variable.yaml 
+--- 
+- name: Description about play.
+  hosts: all
+  vars:
+    msg-01: task01-play01
+    msg-02: task02-play01	
+  tasks:
+    - name: Task-01 
+	  ansible.builtin.debug:
+	    msg: "This is my {{msg-01}} task"
+    - name: Task-02
+	  ansible.builtin.debug:
+	    msg: "This is my {{ msg-02}} task"
+    - name: Task-03
+	  ansible.builtin.debug:
+	    #msg: {{ msg-02}}          ---> This is wrong way 
+		msg: "{{ msg-02}}" 
+
+- name: 2nd play 
+  hosts: localhost
+  become: false 
+  tasks:
+    - name: Task-01-play2nd 
+	  ansible.builtin.debug:
+	    msg: "This is my 1st task of 2nd play"
+...
+
+  - vars:
+  - vars_files 
+  - -e option as a command line argument 
+  
+  FYI- vars; vars_files are applicable on tasks, play levels
+  
+  
