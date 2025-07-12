@@ -1,0 +1,9 @@
+---
+- name: Use ansible facts.
+  hosts: servera.lab.example.com
+  tasks:
+    - name: System info via ansible facts.
+      ansible.builtin.debug:
+        msg: >
+           IP-Address= {{  ansible_facts['default_ipv4']['address'] }} 
+           Mac-Address= {{ ansible_facts['default_ipv4']['macaddress']}}

@@ -1,0 +1,17 @@
+---
+- name: Installing Facts.
+  hosts: servera.lab.example.com
+  tasks:
+    - name: Create base location.
+      ansible.builtin.file:
+        path: /etc/ansible/facts.d/
+        owner: root
+        group: root
+        mode: '0600'
+        recurse: yes
+
+    - name: Installing facts now.
+      ansible.builtin.copy:
+        src: my_info.fact
+        dest: /etc/ansible/facts.d/my_info.fact
+ 

@@ -1,0 +1,7 @@
+---
+- name: Facts calling 
+  hosts: servera.lab.example.com 
+  tasks:
+    - name: Calling facts variable 
+      ansible.builtin.debug: 
+        msg: "{{ ansible_local.my_info.packages.db_package }}"
