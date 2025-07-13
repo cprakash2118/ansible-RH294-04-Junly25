@@ -1,0 +1,15 @@
+---
+- name: Loop example for list.
+  hosts: servera.lab.example.com 
+  vars:
+    - service_list: 
+          - sshd
+          - rsyslog 
+          - httpd
+  tasks:
+    - name: Restart multiple services.
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: restarted 
+      loop: "{{ service_list }}"
+

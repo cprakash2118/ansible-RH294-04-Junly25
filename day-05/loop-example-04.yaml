@@ -1,0 +1,12 @@
+---
+- name: Loop example for list.
+  hosts: all  
+  vars_files:
+   - multiple_svc_list.yaml
+  tasks:
+    - name: Restart multiple services.
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: restarted 
+      loop: "{{ service_list }}"
+

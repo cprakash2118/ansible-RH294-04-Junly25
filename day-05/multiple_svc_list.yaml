@@ -1,0 +1,4 @@
+- service_list: 
+          - sshd
+          - rsyslog 
+          - httpd

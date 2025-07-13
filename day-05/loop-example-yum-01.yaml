@@ -1,0 +1,25 @@
+---
+- name: INstall multiple packages.
+  hosts: all
+  vars:
+    - package_list:
+        - httpd
+        - firewalld 
+    - service_list:
+        - httpd
+        - firewalld 
+        
+  tasks:
+    - name: INstall multiple packages.
+      ansible.builtin.yum: 
+        name: "{{ item }}"
+        state: present 
+      loop: "{{ package_list }}"
+
+    - name: Start multiple service.
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: started 
+        enabled: true 
+      loop: "{{ service_list }}"
+       

@@ -1,0 +1,12 @@
+---
+- name: Loop example for list.
+  hosts: servera.lab.example.com 
+  tasks:
+    - name: Restart multiple services.
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: restarted 
+      loop: 
+          - sshd
+          - rsyslog 
+          - httpd
