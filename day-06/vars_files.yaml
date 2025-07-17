@@ -1,0 +1,12 @@
+package_list: 
+  - httpd
+  - firewalld 
+service_list:
+  - httpd
+  - firewalld 
+port_list:
+  - http
+  - https
+server_list:
+  - servera.lab.example.com
+  - serverb.lab.example.com

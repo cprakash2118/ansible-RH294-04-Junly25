@@ -1,0 +1,50 @@
+---
+- name: Apache deployment on multiple web server.
+  hosts: web
+  vars_files:
+    - vars_files.yaml
+  tasks:
+    - name: Install all required packages for Apache deployment.
+      ansible.builtin.yum: 
+        name: "{{ item }}"
+        state: present 
+      loop: "{{ package_list }}" 
+      when: inventory_hostname in groups['web']
+   
+    - name: Start & enable all required services.
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: started 
+        enabled: true 
+      loop: "{{ service_list }}" 
+      when: inventory_hostname in groups['web']
+   
+    - name: Application deployment (index.html).
+      ansible.builtin.copy:
+        content: "This is my web server - {{ inventory_hostname }} \n"
+        dest: /var/www/html/index.html
+      when: inventory_hostname in groups['web']
+      
+    - name: Enable all required port - http/https.
+      ansible.posix.firewalld:
+        service: "{{ item }}"
+        permanent: yes
+        state: enabled
+        immediate: true 
+      loop: "{{ port_list }}"
+      when: inventory_hostname in groups['web']
+
+- name: varification part for apache.
+  hosts: localhost
+  become: false 
+  vars_files:
+    - vars_files.yaml
+  tasks:
+    - name: Verify the links 
+      ansible.builtin.uri:
+        url: http://{{item}}
+        return_content: true 
+        status_code: 200 
+      loop: "{{ server_list }}"
+ 
+    

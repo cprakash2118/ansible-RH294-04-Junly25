@@ -1,0 +1,29 @@
+---
+- name: Error handling example
+  hosts: servera.lab.example.com
+  tasks:
+  - block:
+    - name: task01
+      ansible.builtin.debug: 
+        msg: "This is task-01"
+      register: output_task01 
+      ignore_errors: true
+
+    - name: Display
+      ansible.builtin.debug:
+        var: output_task01
+      failed_when: true       
+      #ignore_errors: true
+      #
+    rescue:
+    - name: task02
+      ansible.builtin.debug: 
+        msg: "This is task-03"
+      when: output_task01.failed == true 
+
+    always:
+    - name: task04-Example using fail and when together
+      ansible.builtin.fail:
+        msg: The system may not be provisioned according to the CMDB status.
+      when: output_task01.failed == false 
+      ignore_errors: true

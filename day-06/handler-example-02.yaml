@@ -1,0 +1,43 @@
+---
+- name: Handler example
+  hosts: servera.lab.example.com 
+  force_handlers: true
+  tasks:
+    - name: Task-01 
+      ansible.builtin.debug: 
+        msg: "Task-01 has been done"
+    - name: Task-02 - COnfig changes 
+      ansible.builtin.debug: 
+        msg: "Task-02 has been done"
+      changed_when: true
+      notify:
+        - service restart
+    - name: Task-03 
+      ansible.builtin.debug: 
+        msg: "Task-03 has been done"
+      #failed_when: true
+
+    - name: Task-04 
+      ansible.builtin.debug: 
+        msg: "Task-04 has been done"
+      changed_when: true
+      notify:
+        - handler02 
+        - handler03
+  handlers:
+    - name: service restart
+      ansible.builtin.debug: 
+        msg: "Task-05 has been done - it's handler"
+    - name: handler02 
+      ansible.builtin.debug: 
+        msg: "Handler02"
+    - name: handler03
+      ansible.builtin.debug: 
+        msg: "Handler03"
+      
+      
+      
+  
+      
+      
+    
