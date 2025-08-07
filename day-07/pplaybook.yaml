@@ -1,0 +1,55 @@
+---
+- name: Apache deployment - Unit1 to Unit4 concepts.
+  hosts: all
+  vars_files:
+     - vars.yaml 
+  tasks:
+    - name: Task-01 - INstall all required packages.
+      ansible.builtin.yum:
+        name: "{{ item }}" 
+        state: present
+      loop: "{{ package_list }}"
+      when: inventory_hostname in groups['dev']
+
+    - name: Task-02 - Start and enable required services.
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: started
+        enabled: true 
+      loop: "{{ service_list }}"
+      when: inventory_hostname in groups['dev']
+
+    - name: Task-03 - Configuration changes as per Apache.
+      shell: sed -i s/'Listen 80'/'Listen 8080'/g /etc/httpd/conf/httpd.conf
+      notify:
+        - httpd restart 
+      when: inventory_hostname in groups['dev']
+
+    - name: Task-04 - Deploy application.
+      ansible.builtin.copy:
+        content: "This is my web server via Ansible ! \n"
+        dest: /var/www/html/index.html 
+      when: inventory_hostname in groups['dev']
+    
+    - name: Task-05 - Firewall to be set.
+      ansible.posix.firewalld:
+        service: "{{ item }}"
+        immediate: true
+        permanent: yes
+        state: enabled
+      loop: "{{ port_list }}"
+      when: inventory_hostname in groups['dev']
+
+  handlers:
+    - name: httpd restart
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
+        enabled: true 
+       
+
+
+
+
+
+ 

@@ -1,0 +1,9 @@
+port_list: 
+  - http
+  - https
+package_list:
+  - httpd
+  - firewalld
+service_list:
+  - httpd
+  - firewalld
