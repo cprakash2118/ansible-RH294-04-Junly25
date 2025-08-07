@@ -1,0 +1,31 @@
+### Quick Recap:-
+Point-01-# 
+- Ansible Automation Platform (AAP 2.x)
+- AAP components:-
+  ansible-core
+  ansible-navigator 
+  ansible-execution environment 
+  ansible-builder 
+  ansible-controller 
+  
+- AAP's configuation files:-
+  - ansible-navigator.yaml 
+  - ansible.cfg 
+  - inventory 
+
+- Playbooks [single and multiple plays]
+- Playbooks variables [vars, vars_files - scope w.r.t playbook, tasks etc]
+- Managing facts, custom facts, ansible-vault
+- Conditional statements (loop, when)
+- handlers, task control.
+
+Playbook:-
+- installed apache [pkg install - httpd, firewalld]
+- service start and enable [httpd, firewalld]
+- Configuration changes (apache)
+- Application deployment (index.html).
+
+- validate the work/application.
+
+ 
+  
