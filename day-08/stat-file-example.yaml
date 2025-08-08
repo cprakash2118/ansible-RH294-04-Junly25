@@ -1,0 +1,21 @@
+---
+- name: Stat example - Check and create dir.
+  hosts: servera.lab.example.com
+  tasks:
+    - name: Verify the directory.
+      ansible.builtin.stat:
+        path: /custom
+      register: stat_output
+
+    - name: Display stat output
+      ansible.builtin.debug: 
+        var: stat_output 
+
+    - name: Create directory if not exist 
+      ansible.builtin.file:
+        path: /custom
+        state: directory
+        mode: '0755'
+      when: stat_output.stat.exists == false 
+
+

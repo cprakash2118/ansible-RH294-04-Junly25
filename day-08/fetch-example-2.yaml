@@ -1,0 +1,15 @@
+---
+- name: Fetch example 
+  #hosts: servera.lab.example.com
+  hosts: prod
+  tasks:
+    - name: Store file into /tmp/fetched/host.example.com/tmp/somefile
+      ansible.builtin.fetch:
+        #src: /etc/ssh/sshd_config  
+        src: "{{ item }}"
+        dest: ansible-navigator-fetched 
+      loop: 
+         - /etc/ssh/sshd_config
+         - /etc/passwd
+         - /etc/group 
+

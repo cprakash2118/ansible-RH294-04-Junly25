@@ -1,0 +1,8 @@
+---
+- name: Patch example
+  hosts: servera.lab.example.com
+  tasks:
+    - name: Apply patch to one file
+      ansible.posix.patch:
+        src: my-patch-file.txt 
+        dest: /tmp/example-file 

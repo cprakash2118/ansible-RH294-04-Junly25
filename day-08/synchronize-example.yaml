@@ -1,0 +1,9 @@
+---
+- name: Example of Synchronization
+  hosts: servera.lab.example.com 
+  tasks:
+    - name: Synchronization of src on the control machine to dest on the remote hosts
+      ansible.posix.synchronize:
+        src: /home/student/work/ansible-RH294-04-Junly25/day-08 
+        dest: /tmp/
+

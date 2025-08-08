@@ -1,0 +1,9 @@
+---
+- name:  Example
+  hosts: servera.lab.example.com
+  tasks:
+    - name: Add a line of text to a file
+      ansible.builtin.lineinfile:
+        path: /tmp/example-file
+        line: 'Add this line to the file'
+        state: present

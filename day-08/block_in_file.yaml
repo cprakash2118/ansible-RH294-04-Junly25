@@ -1,0 +1,11 @@
+---
+- name:  Example
+  hosts: servera.lab.example.com
+  tasks:
+    - name: Add additional lines to a file
+      ansible.builtin.blockinfile:
+        path: /tmp/example-file
+        block: |
+           First line in the additional block of text
+           Second line in the additional block of text
+        state: present
